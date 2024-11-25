@@ -1,0 +1,119 @@
+# Terminal Upgrades Document
+
+## Overview
+
+This document outlines the enhancements and upgrades to your terminal setup, focusing exclusively on Zsh as the primary shell with cross-compatibility for Bash. Fish shell has been excluded based on your preferences.
+
+### Key Features Added
+
+1. **Oh My Zsh**: A framework for managing Zsh configuration with themes and plugins.
+2. **Powerlevel10k**: A highly customizable and performant Zsh theme.
+3. **Oh My Zsh Plugins**: Selected plugins for functionality, productivity, and compatibility.
+4. **Cross-Shell Compatibility**: Enhancements extend to Bash for basic functionality.
+5. **Tool Installations**: Tools like `fzf`, `bat`, `lazygit`, etc., are installed for use across both shells.
+
+---
+
+## Plugins for Oh My Zsh
+
+The following plugins are added for enhanced terminal functionality:
+
+### Core Plugins
+
+- **git**: Simplifies Git commands.
+- **zsh-autosuggestions**: Provides command suggestions based on history.
+- **zsh-syntax-highlighting**: Adds syntax highlighting to the terminal.
+- **zsh-completions**: Extends autocompletions for commands.
+- **fzf**: Integrates fuzzy finder functionality.
+- **z**: Quickly navigate to frequently accessed directories.
+- **history**: Enhances command history navigation.
+
+### Additional Plugins
+
+- **golang**: Useful for working with Terraform and Go projects.
+- **history-substring-search**: Enables substring-based search for history.
+- **zsh-navigation-tools**: Adds advanced navigation and tab completion.
+- **wp-cli**: Streamlines WordPress CLI commands.
+- **vscode**: Simplifies working with Visual Studio Code.
+- **themes**: Manages and customizes Zsh themes.
+- **terraform**: Adds autocompletions and aliases for Terraform.
+- **systemd**: Helps manage systemd services.
+- **systemadmin**: Provides system administration tools and shortcuts.
+- **rust**: Adds support for Rust development.
+- **please**: Enhances sudo-like commands with “please.”
+- **nomad**: Adds autocompletions for HashiCorp Nomad.
+- **n98-magerun**: A CLI tool for Magento administration.
+- **magic-enter**: Binds the Enter key for enhanced functionality.
+- **macOS**: Adds shortcuts and commands specific to macOS systems.
+
+---
+
+## Bash Enhancements
+
+For Bash, the following configurations ensure similar functionality:
+
+1. **fzf**: Adds fuzzy finding capabilities.
+2. **z**: Enables navigation to frequently accessed directories.
+3. **thefuck**: Corrects mistyped commands.
+4. **tldr**: Simplified and community-driven man pages.
+
+### Updates to `~/.bashrc`
+
+- Aliases and key bindings for the above tools.
+- Support for shared tools installed via Homebrew.
+
+---
+
+## Tool Installations
+
+The following tools are installed for both Zsh and Bash:
+
+| **Tool**       | **Purpose**                                                  |
+|----------------|--------------------------------------------------------------|
+| `thefuck`      | Corrects mistyped commands.                                  |
+| `z`            | Quick directory navigation.                                  |
+| `fd`           | A faster and user-friendly alternative to `find`.            |
+| `httpie`       | A user-friendly HTTP client.                                 |
+| `tldr`         | Simplified man pages.                                        |
+| `ncdu`         | Disk usage analyzer.                                         |
+| `ranger`       | Terminal-based file manager.                                 |
+| `lazygit`      | A simple Git UI for the terminal.                            |
+| `bat`          | Syntax highlighting for file previews (replacement for `cat`).|
+| `exa`          | A modern replacement for `ls`.                               |
+| `fzf`          | Command-line fuzzy finder.                                   |
+| `shellcheck`   | Linter for shell scripts.                                    |
+| `code-runner`  | Extension for running code directly in VS Code.              |
+
+---
+
+## VS Code Integration
+
+### Terminal Settings
+
+The following settings are added to ensure VS Code terminal compatibility:
+
+- **Font Family**: Set to `MesloLGS NF` for Powerlevel10k compatibility.
+- **Default Profile**: Zsh is configured as the default terminal.
+- **Custom Key Bindings**: Configurations for cursor style and blinking.
+
+### Example VS Code Settings
+
+```json
+{
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.cursorBlinking": true
+}
+```
+
+---
+
+## Notes and Next Steps
+
+- Ensure that all plugins are installed and configured properly by reloading the shell (`source ~/.zshrc`).
+- The Bash enhancements are compatible but do not support all Zsh plugins.
+- Use the provided setup script for streamlined installation.
+
+Let me know if further adjustments are required!

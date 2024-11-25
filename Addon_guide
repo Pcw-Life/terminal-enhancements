@@ -1,0 +1,355 @@
+# Add-ons Usage Guide
+
+This guide provides detailed usage instructions for each add-on installed and configured during the terminal setup process. It includes commands, examples, and additional configurations for Zsh and Bash environments.
+
+---
+
+## **Oh My Zsh Plugins**
+
+### **1. Git**
+
+Enhances Git workflow with useful aliases and functions.
+
+- **Key Commands:**
+  - `gst`: Show the status of the repository.
+  - `gco`: Checkout a branch.
+  - `gl`: Pull changes from the remote repository.
+
+---
+
+### **2. Docker**
+
+Simplifies Docker commands.
+
+- **Key Commands:**
+  - `dps`: List running containers (`docker ps`).
+  - `dstart`: Start a stopped container (`docker start`).
+  - `dbuild`: Build a Docker image (`docker build`).
+
+---
+
+### **3. NPM**
+
+Adds aliases for managing Node.js packages.
+
+- **Key Commands:**
+  - `npmi`: Install a package.
+  - `npml`: List globally installed packages.
+  - `npmp`: Publish a package.
+
+---
+
+### **4. Pip**
+
+Streamlines Python package management.
+
+- **Key Commands:**
+  - `pipi`: Install a Python package.
+  - `pipup`: Update all installed Python packages.
+  - `pipl`: List installed packages.
+
+---
+
+### **5. FZF**
+
+Enhances fuzzy searching in the terminal.
+
+- **Key Commands:**
+  - `**<TAB>`: Use FZF for directory navigation.
+  - `CTRL+T`: Open FZF to search for files.
+  - `CTRL+R`: Search command history.
+
+---
+
+### **6. Z**
+
+Quickly navigate to frequently used directories.
+
+- **Key Commands:**
+  - `z <partial-directory-name>`: Jump to a directory based on its usage frequency.
+
+---
+
+### **7. History Substring Search**
+
+Provides incremental search of your command history.
+
+- **Key Commands:**
+  - Start typing and press the **Up** or **Down** arrows to search.
+
+---
+
+### **8. Zsh Navigation Tools**
+
+Improves navigation through command output and buffers.
+
+- **Key Commands:**
+  - `ALT+H`: View directory history.
+  - `CTRL+G`: Go to the last directory.
+
+---
+
+### **9. WP-CLI**
+
+Adds WordPress CLI commands.
+
+- **Key Commands:**
+  - `wp plugin install <plugin>`: Install a WordPress plugin.
+  - `wp theme update <theme>`: Update a WordPress theme.
+  - `wp db export`: Export the WordPress database.
+
+---
+
+### **10. Terraform**
+
+Adds commands to streamline Terraform usage.
+
+- **Key Commands:**
+  - `tfinit`: Initialize a Terraform project.
+  - `tfplan`: Create a Terraform plan.
+  - `tfapply`: Apply Terraform changes.
+
+---
+
+### **11. Systemd**
+
+Integrates systemd commands for managing services.
+
+- **Key Commands:**
+  - `systemctl start <service>`: Start a service.
+  - `systemctl status <service>`: Check the status of a service.
+  - `journalctl -f`: View system logs in real-time.
+
+---
+
+### **12. Systemadmin**
+
+Provides aliases and functions for system administration tasks.
+
+- **Key Commands:**
+  - `dfh`: Display disk space usage.
+  - `top`: Monitor system performance.
+
+---
+
+### **13. Rust**
+
+Enhances Rust development workflows.
+
+- **Key Commands:**
+  - `cargo build`: Compile a Rust project.
+  - `cargo test`: Run tests in a Rust project.
+  - `cargo fmt`: Format Rust code.
+
+---
+
+### **14. Please**
+
+Adds polite corrections for mistyped commands.
+
+- **Key Commands:**
+  - Mistype a command, and `please` will suggest the correct one.
+
+---
+
+### **15. Nomad**
+
+Streamlines HashiCorp Nomad workflows.
+
+- **Key Commands:**
+  - `nomad run <job>`: Run a Nomad job.
+  - `nomad status`: Check the status of a job.
+
+---
+
+### **16. N98-Magerun**
+
+Adds Magento CLI commands for managing Magento projects.
+
+- **Key Commands:**
+  - `n98-magerun.phar cache:clean`: Clean Magento cache.
+  - `n98-magerun.phar db:dump`: Dump the Magento database.
+
+---
+
+### **17. Magic Enter**
+
+Enhances the behavior of the Enter key for command execution.
+
+- **Key Feature:**
+  - Repeats the last command when Enter is pressed on an empty line.
+
+---
+
+### **18. MacOS**
+
+Adds macOS-specific commands and aliases.
+
+- **Key Commands:**
+  - `showfiles`: Show hidden files in Finder.
+  - `hidefiles`: Hide hidden files in Finder.
+
+---
+
+## **Standalone Tools**
+
+### **The Fuck**
+
+Corrects previous command errors automatically.
+
+- **Usage:**
+  - After an error, type:
+
+    ```bash
+    fuck
+    ```
+
+---
+
+### **FD**
+
+A fast and user-friendly alternative to `find`.
+
+- **Usage:**
+  - Search for files:
+
+    ```bash
+    fd <search-term>
+    ```
+
+---
+
+### **HTTPie**
+
+A user-friendly HTTP client for API testing.
+
+- **Usage:**
+  - Test an API endpoint:
+
+    ```bash
+    http GET https://api.example.com
+    ```
+
+---
+
+### **TLDR**
+
+Simplified man pages.
+
+- **Usage:**
+  - Display command examples:
+
+    ```bash
+    tldr <command>
+    ```
+
+---
+
+### **NCDU**
+
+A disk usage analyzer.
+
+- **Usage:**
+  - Analyze disk usage:
+
+    ```bash
+    ncdu
+    ```
+
+---
+
+### **Ranger**
+
+A terminal-based file manager.
+
+- **Usage:**
+  - Start Ranger:
+
+    ```bash
+    ranger
+    ```
+
+---
+
+### **Lazygit**
+
+A terminal-based Git UI.
+
+- **Usage:**
+  - Start Lazygit:
+
+    ```bash
+    lazygit
+    ```
+
+---
+
+### **Bat**
+
+A modern replacement for `cat` with syntax highlighting.
+
+- **Usage:**
+  - View a file:
+
+    ```bash
+    bat <file>
+    ```
+
+---
+
+### **Exa**
+
+A modern replacement for `ls`.
+
+- **Usage:**
+  - List files:
+
+    ```bash
+    exa -l
+    ```
+
+---
+
+### **FZF**
+
+A command-line fuzzy finder.
+
+- **Usage:**
+  - Search files interactively:
+
+    ```bash
+    fzf
+    ```
+
+---
+
+### **ShellCheck**
+
+A shell script linter.
+
+- **Usage:**
+  - Check a script:
+
+    ```bash
+    shellcheck <script>
+    ```
+
+---
+
+## **Getting Started**
+
+1. Add the plugins to your `~/.zshrc`:
+
+   ```bash
+   plugins=(git docker npm pip fzf z history-substring-search zsh-navigation-tools wp-cli terraform systemd systemadmin rust please nomad n98-magerun magic-enter macos)
+   ```
+
+2. Reload Zsh:
+
+   ```bash
+   source ~/.zshrc
+   ```
+
+3. Start using the tools as described above.
+
+If you encounter any issues, let me know for troubleshooting or further assistance!

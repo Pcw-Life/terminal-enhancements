@@ -1,0 +1,28 @@
+# Zsh Shortcuts and Custom Functions Cheat Sheet
+
+## Aliases
+
+- `ll`: `ls -la` - List all files and directories with detailed information.
+- `gs`: `git status` - Show the status of the current Git repository.
+- `gp`: `git pull` - Pull the latest changes from the remote Git repository.
+- `gc`: `git commit -m` - Commit changes with a message.
+- `vim`: `nvim` - Use Neovim as the default Vim editor.
+- `edit`: `code .` - Open the current directory in Visual Studio Code.
+- `vedit`: `vim` - Open files in Vim.
+
+## Environment Variables
+
+- `EDITOR='code'` - Set Visual Studio Code as the default editor.
+- `NODE_ENV='development'` - Set the Node.js environment to development.
+- `VISUAL='vim'` - Set Vim as the visual editor.
+- `EDITOR='vim'` - Set Vim as the default editor.
+
+## Custom Functions
+
+- `mkcd <directory_name>`: Create a new directory and navigate into it.
+
+  ```shell
+  function mkcd() {
+      mkdir -p "$1"
+      cd "$1"
+  }
