@@ -23,8 +23,13 @@ function ensure_plugin_installed {
   local plugin_name=$1
   if [ ! -d "$ZSH_CUSTOM/plugins/$plugin_name" ]; then
     echo "Installing $plugin_name plugin..."
-    git clone https://github.com/zsh-users/$plugin_name ${ZSH_CUSTOM}/plugins/$plugin_name || \
-      handle_error "Failed to install $plugin_name plugin." "Check Git installation and internet connectivity."
+    if [ "$plugin_name" = "zsh-history-substring-search" ]; then
+      git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM}/plugins/$plugin_name ||
+        handle_error "Failed to install $plugin_name plugin." "Check Git installation and internet connectivity."
+    else
+      git clone https://github.com/zsh-users/$plugin_name ${ZSH_CUSTOM}/plugins/$plugin_name ||
+        handle_error "Failed to install $plugin_name plugin." "Check Git installation and internet connectivity."
+    fi
   else
     echo "$plugin_name plugin is already installed."
   fi
@@ -48,79 +53,79 @@ function ensure_tool_installed {
 # Step 1: Install Oh My Zsh
 echo "Checking for Oh My Zsh installation..."
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "Installing Oh My Zsh..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || \
-      handle_error "Oh My Zsh installation failed." "Check internet connectivity."
+  echo "Installing Oh My Zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" ||
+    handle_error "Oh My Zsh installation failed." "Check internet connectivity."
 else
-    echo "Oh My Zsh is already installed."
+  echo "Oh My Zsh is already installed."
 fi
 
 # Backup existing .zshrc
 if [ -f "$HOME/.zshrc" ]; then
-    echo "Backing up existing .zshrc..."
-    cp ~/.zshrc ~/.zshrc.bak || handle_error "Failed to back up .zshrc." "Check file permissions and available disk space."
+  echo "Backing up existing .zshrc..."
+  cp ~/.zshrc ~/.zshrc.bak || handle_error "Failed to back up .zshrc." "Check file permissions and available disk space."
 fi
 
 # Step 2: Install Powerlevel10k
 echo "Checking for Powerlevel10k theme installation..."
 if [ ! -d "${ZSH_CUSTOM}/themes/powerlevel10k" ]; then
-    echo "Installing Powerlevel10k theme..."
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k || \
-      handle_error "Failed to install Powerlevel10k theme." "Check Git installation and internet connectivity."
+  echo "Installing Powerlevel10k theme..."
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k ||
+    handle_error "Failed to install Powerlevel10k theme." "Check Git installation and internet connectivity."
 fi
 
 # Set Powerlevel10k as the theme
 echo "Setting Powerlevel10k as the default theme..."
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i.bak 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc || \
-      handle_error "Failed to set Powerlevel10k as the theme." "Check ~/.zshrc file permissions."
+  sed -i.bak 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc ||
+    handle_error "Failed to set Powerlevel10k as the theme." "Check ~/.zshrc file permissions."
 else
-    sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc || \
-      handle_error "Failed to set Powerlevel10k as the theme." "Check ~/.zshrc file permissions."
+  sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc ||
+    handle_error "Failed to set Powerlevel10k as the theme." "Check ~/.zshrc file permissions."
 fi
 
 # Step 3: Install Oh My Zsh Plugins
 PLUGINS=(
-    "zsh-autosuggestions"
-    "zsh-syntax-highlighting"
-    "zsh-completions"
-    "history-substring-search"
+  "zsh-autosuggestions"
+  "zsh-syntax-highlighting"
+  "zsh-completions"
+  "zsh-history-substring-search"
 )
 echo "Installing Zsh plugins..."
 for plugin in "${PLUGINS[@]}"; do
-    ensure_plugin_installed "$plugin"
+  ensure_plugin_installed "$plugin"
 done
 
 # Update plugins in .zshrc
 echo "Updating plugins in .zshrc..."
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i.bak 's/^plugins=.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions history-substring-search)/' ~/.zshrc || \
-      handle_error "Failed to update plugins in .zshrc." "Check ~/.zshrc file permissions."
+  sed -i.bak 's/^plugins=.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions zsh-history-substring-search)/' ~/.zshrc ||
+    handle_error "Failed to update plugins in .zshrc." "Check ~/.zshrc file permissions."
 else
-    sed -i 's/^plugins=.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions history-substring-search)/' ~/.zshrc || \
-      handle_error "Failed to update plugins in .zshrc." "Check ~/.zshrc file permissions."
+  sed -i 's/^plugins=.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions zsh-history-substring-search)/' ~/.zshrc ||
+    handle_error "Failed to update plugins in .zshrc." "Check ~/.zshrc file permissions."
 fi
 
 # Step 4: Install Common Tools
 TOOLS=(thefuck z fd httpie tldr ncdu ranger lazygit bat lsd fzf shellcheck)
 echo "Installing common tools..."
 for tool in "${TOOLS[@]}"; do
-    ensure_tool_installed "$tool"
+  ensure_tool_installed "$tool"
 done
 
 # Configure fzf
 echo "Configuring fzf..."
 if ! $(brew --prefix)/opt/fzf/install --all; then
-    handle_error "Failed to configure fzf." "Check fzf installation and retry."
+  handle_error "Failed to configure fzf." "Check fzf installation and retry."
 fi
 
 # Step 5: Configure Bash
 if [ -f "$HOME/.bashrc" ]; then
-    echo "Backing up existing .bashrc..."
-    cp ~/.bashrc ~/.bashrc.bak || handle_error "Failed to back up .bashrc." "Check file permissions and available disk space."
+  echo "Backing up existing .bashrc..."
+  cp ~/.bashrc ~/.bashrc.bak || handle_error "Failed to back up .bashrc." "Check file permissions and available disk space."
 fi
 
-cat <<EOF >> ~/.bashrc
+cat <<EOF >>~/.bashrc
 
 # Common Tools for Bash
 export PATH="\$PATH:/usr/local/bin"
